@@ -6,13 +6,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                sh 'docker built -t test'
             }
         }
         
         stage('Deploy') {
             steps {
-                
+                sh 'docker run -p 4000:4000 -it test'
             }
         }
     }
