@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-      docker {image 'node:24-alpine'}
-    }
+    agent any
 
     stages {
         stage('Build') {
@@ -12,7 +10,7 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                sh 'docker run -p 4000:4000 -it test'
+                sh 'docker run -d --name test -p 4000:4000 test'
             }
         }
     }
